@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Marker for connecting arrows -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#58a6ff" />
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#21262d" />
+    </linearGradient>
+    
+    <linearGradient id="tier1-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6beb" />
+      <stop offset="100%" stop-color="#0544a8" />
+    </linearGradient>
+
+    <linearGradient id="tier2-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#238636" />
+      <stop offset="100%" stop-color="#104d1a" />
+    </linearGradient>
+
+    <linearGradient id="tier3-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8957e5" />
+      <stop offset="100%" stop-color="#4c2889" />
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="bold">LLM Model Serving Tiers &amp; Routing Strategy</text>
+
+  <!-- ================= TIER 1 ================= -->
+  <g transform="translate(50, 60)">
+    <!-- Container -->
+    <rect x="0" y="0" width="800" height="155" rx="8" fill="url(#box-grad)" stroke="#30363d" stroke-width="2" />
+    
+    <!-- Header Banner -->
+    <path d="M 0 8 A 8 8 0 0 1 8 0 L 792 0 A 8 8 0 0 1 800 8 L 800 45 L 0 45 Z" fill="url(#tier1-header)" />
+    <text x="400" y="28" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Tier 1: Small &amp; Fast</text>
+
+    <!-- Sub-header Focus -->
+    <rect x="0" y="45" width="800" height="30" fill="#161b22" fill-opacity="0.6" />
+    <text x="400" y="65" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="600">Focus: Sub-200ms Inline Completion, Real-Time Synthesizing, Low Latency</text>
+    <line x1="0" y1="75" x2="800" y2="75" stroke="#30363d" stroke-width="1" />
+
+    <!-- Content Bullets -->
+    <circle cx="25" cy="100" r="4" fill="#58a6ff" />
+    <text x="40" y="104" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">Gemma 4 (E4B / 26B A4B MoE)</tspan> — 3.8B active params, ultra-light footprint
+    </text>
+
+    <circle cx="25" cy="130" r="4" fill="#58a6ff" />
+    <text x="40" y="134" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">Qwen3-Coder-Next</tspan> — 80B MoE (3B active params), optimized for fast agents
+    </text>
+  </g>
+
+  <!-- Arrow Tier 1 -> Tier 2 -->
+  <path d="M 450 215 L 450 250" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+
+  <!-- ================= TIER 2 ================= -->
+  <g transform="translate(50, 250)">
+    <!-- Container -->
+    <rect x="0" y="0" width="800" height="155" rx="8" fill="url(#box-grad)" stroke="#30363d" stroke-width="2" />
+    
+    <!-- Header Banner -->
+    <path d="M 0 8 A 8 8 0 0 1 8 0 L 792 0 A 8 8 0 0 1 800 8 L 800 45 L 0 45 Z" fill="url(#tier2-header)" />
+    <text x="400" y="28" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Tier 2: Medium / Balanced</text>
+
+    <!-- Sub-header Focus -->
+    <rect x="0" y="45" width="800" height="30" fill="#161b22" fill-opacity="0.6" />
+    <text x="400" y="65" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="600">Focus: Standard Chat, Function Generation, Multi-File Code Edits</text>
+    <line x1="0" y1="75" x2="800" y2="75" stroke="#30363d" stroke-width="1" />
+
+    <!-- Content Bullets -->
+    <circle cx="25" cy="100" r="4" fill="#3fb950" />
+    <text x="40" y="104" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">Gemma 4 31B Dense</tspan> — Dense reasoning &amp; multi-language coding
+    </text>
+
+    <circle cx="25" cy="130" r="4" fill="#3fb950" />
+    <text x="40" y="134" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">Qwen2.5-Coder-32B-Instruct</tspan> — SOTA 32B coding benchmark performance
+    </text>
+  </g>
+
+  <!-- Arrow Tier 2 -> Tier 3 -->
+  <path d="M 450 405 L 450 440" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+
+  <!-- ================= TIER 3 ================= -->
+  <g transform="translate(50, 440)">
+    <!-- Container -->
+    <rect x="0" y="0" width="800" height="155" rx="8" fill="url(#box-grad)" stroke="#30363d" stroke-width="2" />
+    
+    <!-- Header Banner -->
+    <path d="M 0 8 A 8 8 0 0 1 8 0 L 792 0 A 8 8 0 0 1 800 8 L 800 45 L 0 45 Z" fill="url(#tier3-header)" />
+    <text x="400" y="28" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Tier 3: Large &amp; Frontier</text>
+
+    <!-- Sub-header Focus -->
+    <rect x="0" y="45" width="800" height="30" fill="#161b22" fill-opacity="0.6" />
+    <text x="400" y="65" text-anchor="middle" fill="#a371f7" font-size="13" font-weight="600">Focus: System Architecture, Complex Debugging, Large Repo Context</text>
+    <line x1="0" y1="75" x2="800" y2="75" stroke="#30363d" stroke-width="1" />
+
+    <!-- Content Bullets -->
+    <circle cx="25" cy="100" r="4" fill="#a371f7" />
+    <text x="40" y="104" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">DeepSeek-V4-Pro / DeepSeek-Coder-V4</tspan> — 1.6T MoE (49B active), 1M context
+    </text>
+
+    <circle cx="25" cy="130" r="4" fill="#a371f7" />
+    <text x="40" y="134" fill="#c9d1d9" font-size="13">
+      <tspan font-weight="bold" fill="#f0f6fc">Llama-3.3-70B-Instruct</tspan> — Heavy logic &amp; deep multi-turn agentic workflows
+    </text>
+  </g>
+</svg>

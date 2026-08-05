@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 1150" width="100%" height="100%" style="background: #0f172a; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="client-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    
+    <linearGradient id="gateway-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#311042"/>
+    </linearGradient>
+
+    <linearGradient id="proxy-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+
+    <linearGradient id="eks-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+
+    <linearGradient id="node-a-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <linearGradient id="node-b-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <linearGradient id="db-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#854d0e"/>
+      <stop offset="100%" stop-color="#713f12"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0ea5e9" />
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-size: 16px; font-weight: 700; fill: #f8fafc; }
+    .subtitle { font-size: 12px; fill: #94a3b8; }
+    .badge { font-size: 11px; font-weight: 600; fill: #38bdf8; }
+    .label { font-size: 13px; font-weight: 600; fill: #e2e8f0; }
+    .sublabel { font-size: 11px; fill: #cbd5e1; }
+    .node-title { font-size: 14px; font-weight: 700; fill: #38bdf8; }
+    .pod-title { font-size: 12px; font-weight: 600; fill: #f1f5f9; }
+    .pod-desc { font-size: 11px; fill: #a7f3d0; }
+
+    /* Keyframe Animations */
+    .flow-line {
+      stroke-dasharray: 8, 8;
+      animation: dash 1.5s linear infinite;
+    }
+    
+    .pulse-glow {
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -16;
+      }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.8; }
+    }
+  </style>
+
+  <!-- ==================== CONNECTIONS (BACKGROUND) ==================== -->
+  
+  <!-- Dev Tools -> ALB -->
+  <path id="path-dev-alb" d="M 675,110 L 675,160" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 675,110 L 675,160" stroke="#38bdf8" stroke-width="2" class="flow-line" />
+
+  <!-- ALB -> LiteLLM -->
+  <path id="path-alb-proxy" d="M 675,230 L 675,280" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 675,230 L 675,280" stroke="#38bdf8" stroke-width="2" class="flow-line" />
+
+  <!-- LiteLLM -> Storage/State (Orthogonal Left Path to shifted position) -->
+  <path id="path-proxy-db" d="M 425,375 L 170,375 L 170,510" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 425,375 L 170,375 L 170,510" fill="none" stroke="#f59e0b" stroke-width="2" class="flow-line" />
+
+  <!-- LiteLLM -> EKS Cluster -->
+  <path id="path-proxy-eks" d="M 675,470 L 675,530" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 675,470 L 675,530" stroke="#10b981" stroke-width="2" class="flow-line" />
+
+  <!-- Karpenter -> EKS Cluster (Right Side Connection) -->
+  <path d="M 1120,610 L 1025,610" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)" />
+
+  <!-- EKS Internal: KAI Scheduler -> Node Pools -->
+  <path d="M 675,685 L 500,685 L 500,730" fill="none" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <path d="M 675,685 L 850,685 L 850,730" fill="none" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+  <!-- Flow particles on Node Pool paths -->
+  <path d="M 675,685 L 500,685 L 500,730" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line" />
+  <path d="M 675,685 L 850,685 L 850,730" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line" />
+
+
+  <!-- ==================== 1. DEVELOPER TOOLS ==================== -->
+  <g transform="translate(450, 30)">
+    <rect width="450" height="80" rx="12" fill="url(#client-grad)" stroke="#3b82f6" stroke-width="2" filter="url(#glow-blue)"/>
+    <text x="225" y="32" text-anchor="middle" class="title">Developer Desktop Tools / IDEs</text>
+    <text x="225" y="58" text-anchor="middle" class="subtitle">OpenCode  |  VSCode + Continue / Cline  |  Claude Code</text>
+  </g>
+
+
+  <!-- ==================== 2. INGRESS & AUTH ==================== -->
+  <g transform="translate(450, 160)">
+    <rect width="450" height="70" rx="10" fill="url(#gateway-grad)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="225" y="41" text-anchor="middle" class="title">ALB + AWS WAF + OIDC (SSO)</text>
+  </g>
+
+
+  <!-- ==================== 3. LITELLM PROXY GATEWAY ==================== -->
+  <g transform="translate(425, 280)">
+    <!-- Container -->
+    <rect width="500" height="190" rx="12" fill="url(#proxy-grad)" stroke="#10b981" stroke-width="2" filter="url(#glow-green)"/>
+    <rect x="360" y="12" width="120" height="22" rx="4" fill="#047857"/>
+    <text x="420" y="27" text-anchor="middle" class="badge" fill="#ecfdf5">ECS / EKS</text>
+    
+    <text x="20" y="35" class="title">LiteLLM Proxy Gateway</text>
+    
+    <!-- Feature Chips -->
+    <g transform="translate(20, 55)">
+      <!-- Feature 1 -->
+      <rect x="0" y="0" width="460" height="35" rx="6" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text x="15" y="22" class="sublabel" fill="#a7f3d0">🔄 Maps OpenAI API Schema ➔ Upstream Target Slices</text>
+      
+      <!-- Feature 2 -->
+      <rect x="0" y="45" width="460" height="70" rx="6" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text x="15" y="68" class="sublabel" fill="#a7f3d0">🛡️ Auth &amp; Identity Verification</text>
+      <text x="15" y="88" class="sublabel" fill="#a7f3d0">⚡ Rate-Limiting | 💰 Budgeting | 📝 Audit Logging</text>
+    </g>
+  </g>
+
+
+  <!-- ==================== 4. STORAGE / STATE (SHIFTED MORE TO LEFT) ==================== -->
+  <g transform="translate(40, 510)">
+    <rect width="260" height="150" rx="10" fill="url(#db-grad)" stroke="#d97706" stroke-width="1.5"/>
+    <text x="130" y="32" text-anchor="middle" class="title" fill="#fef3c7">Storage / State</text>
+    
+    <!-- Redis -->
+    <rect x="20" y="52" width="220" height="36" rx="5" fill="#451a03" stroke="#b45309"/>
+    <text x="130" y="75" text-anchor="middle" class="sublabel" fill="#fde68a">⚡ Redis (ElastiCache)</text>
+    
+    <!-- Postgres -->
+    <rect x="20" y="98" width="220" height="36" rx="5" fill="#451a03" stroke="#b45309"/>
+    <text x="130" y="121" text-anchor="middle" class="sublabel" fill="#fde68a">🐘 Postgres (RDS)</text>
+  </g>
+
+
+  <!-- ==================== KARPENTER (RIGHT FLANK) ==================== -->
+  <g transform="translate(1090, 560)">
+    <rect width="160" height="90" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="80" y="38" text-anchor="middle" class="title" style="font-size: 13px;" fill="#f3e8ff">Karpenter</text>
+    <text x="80" y="60" text-anchor="middle" class="subtitle" fill="#d8b4fe">GPU Autoscaler</text>
+  </g>
+
+
+  <!-- ==================== 5. AWS EKS CLUSTER ==================== -->
+  <g transform="translate(325, 530)">
+    <!-- Outer EKS Box -->
+    <rect width="700" height="570" rx="16" fill="url(#eks-grad)" stroke="#0284c7" stroke-width="2"/>
+    <text x="25" y="35" class="title" fill="#e0f2fe">AWS EKS Cluster</text>
+
+    <!-- Operators / Orchestration Layer -->
+    <g transform="translate(25, 50)">
+      <!-- NVIDIA GPU Operator -->
+      <rect x="0" y="0" width="310" height="50" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+      <text x="15" y="22" class="label" style="font-size: 12px;">NVIDIA GPU Operator</text>
+      <text x="15" y="38" class="sublabel" fill="#38bdf8">Configures MIG mode dynamically</text>
+
+      <!-- KAI Scheduler -->
+      <rect x="340" y="0" width="310" height="50" rx="8" fill="#0c4a6e" stroke="#0284c7" stroke-width="2"/>
+      <text x="355" y="22" class="label" style="font-size: 12px;" fill="#f0f9ff">KAI Scheduler</text>
+      <text x="355" y="38" class="sublabel" fill="#38bdf8">Topology | Fractional Routing &amp; Queues</text>
+    </g>
+
+    <!-- NODE POOL A -->
+    <g transform="translate(25, 200)">
+      <rect width="310" height="340" rx="10" fill="url(#node-a-grad)" stroke="#334155" stroke-width="1.5"/>
+      <text x="15" y="25" class="node-title">Node Pool A: H100 / A100</text>
+      <text x="15" y="42" class="subtitle" fill="#a1a1aa">MIG-Enabled Dynamic Slicing</text>
+
+      <!-- Pod 1 -->
+      <g transform="translate(15, 55)">
+        <rect width="280" height="80" rx="6" fill="#18181b" stroke="#10b981" stroke-width="1.5"/>
+        <text x="12" y="22" class="pod-title">Pod 1: vLLM (MIG 3g.40gb)</text>
+        <rect x="12" y="32" width="160" height="18" rx="3" fill="#064e3b"/>
+        <text x="16" y="45" class="badge" fill="#34d399">Qwen2.5-Coder-32B</text>
+        <text x="12" y="68" class="sublabel" fill="#71717a">High-Throughput Code Generation</text>
+      </g>
+
+      <!-- Pod 2 -->
+      <g transform="translate(15, 145)">
+        <rect width="280" height="80" rx="6" fill="#18181b" stroke="#0ea5e9" stroke-width="1.5"/>
+        <text x="12" y="22" class="pod-title">Pod 2: vLLM (MIG 2g.20gb)</text>
+        <rect x="12" y="32" width="150" height="18" rx="3" fill="#0c4a6e"/>
+        <text x="16" y="45" class="badge" fill="#38bdf8">Qwen2.5-Coder-7B</text>
+        <text x="12" y="68" class="sublabel" fill="#71717a">Low-Latency Inline Completion</text>
+      </g>
+
+      <!-- Pod 3 -->
+      <g transform="translate(15, 235)">
+        <rect width="280" height="80" rx="6" fill="#18181b" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="12" y="22" class="pod-title">Pod 3: vLLM (MIG 2g.20gb)</text>
+        <rect x="12" y="32" width="170" height="18" rx="3" fill="#2e1065"/>
+        <text x="16" y="45" class="badge" fill="#c084fc">Code-Embedding-v2</text>
+        <text x="12" y="68" class="sublabel" fill="#71717a">Semantic Search &amp; RAG Vectorization</text>
+      </g>
+    </g>
+
+    <!-- NODE POOL B -->
+    <g transform="translate(365, 200)">
+      <rect width="310" height="340" rx="10" fill="url(#node-b-grad)" stroke="#334155" stroke-width="1.5"/>
+      <text x="15" y="25" class="node-title" fill="#f59e0b">Node Pool B: L4 / A10G</text>
+      <text x="15" y="42" class="subtitle" fill="#a1a1aa">Time-Sliced / MPS via KAI</text>
+
+      <!-- Dev/Testing Pod -->
+      <g transform="translate(15, 55)">
+        <rect width="280" height="260" rx="6" fill="#18181b" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <text x="15" y="30" class="pod-title" fill="#fbbf24">Light Tasks &amp; Dev Workloads</text>
+
+        <rect x="15" y="50" width="250" height="40" rx="4" fill="#292524"/>
+        <text x="25" y="74" class="sublabel" fill="#d6d3d1">🧪 Dev Testing Instances</text>
+
+        <rect x="15" y="100" width="250" height="40" rx="4" fill="#292524"/>
+        <text x="25" y="124" class="sublabel" fill="#d6d3d1">⚡ Fast-Feedback Drafts</text>
+
+        <rect x="15" y="150" width="250" height="40" rx="4" fill="#292524"/>
+        <text x="25" y="174" class="sublabel" fill="#d6d3d1">🔀 MPS Shared Acceleration</text>
+
+        <!-- Multi-line text for dynamic time-slicing note -->
+        <text x="15" y="218" class="sublabel" fill="#78716c" style="font-style: italic;">
+          <tspan x="15" dy="0">Dynamic time-slicing active for high concurrency</tspan>
+          <tspan x="15" dy="16">on cost-effective GPUs.</tspan>
+        </text>
+      </g>
+    </g>
+
+  </g>
+</svg>
