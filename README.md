@@ -517,6 +517,8 @@ In the developer's IDE configuration, the OpenAI standard interface allows mappi
 
 - [6 Layers of AI Stack](https://www.youtube.com/watch?v=hr8wYU6F9y0)
 
+- [KAI Scheduler and vCluster](https://www.linkedin.com/pulse/architectural-patterns-gpu-multi-tenancy-balancing-isolation-thota-8qbrf/)
+
 - [Oh-My-Pi](https://www.youtube.com/watch?v=jcCPUcS4yzs)
 
 - [Pi Extensible Workglows](https://www.youtube.com/watch?v=qAiivspEHmU&t=473s)

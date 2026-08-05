@@ -9,18 +9,18 @@
         "apiKey": "omlx"
       },
       "models": {
-        "Qwen3.6-35B-A3B-MLX-4bit": {
-          "name": "Qwen3.6-35B-A3B-MLX-4bit",
+        "Qwen3.6-35B-A3B-5bit": {
+          "name": "Qwen3.6-35B-A3B-5bit",
           "modalities": {
             "input": ["text", "image"],
             "output": ["text"]
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65536,
             "output": 32768
           }
-        },
+        },        
         "Qwen3.6-27B-MLX-6bit": {
           "name": "Qwen3.6-27B-MLX-6bit",
           "modalities": {
@@ -29,7 +29,7 @@
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65536,
             "output": 32768
           }
         },
@@ -41,7 +41,7 @@
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65536,
             "output": 32768
           }
         },
@@ -53,7 +53,7 @@
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65536,
             "output": 32768
           }
         },    
@@ -65,20 +65,20 @@
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65536,
             "output": 32768
           }
-        }
+        }    
       }
     }
   },
   "permission": {
     "*": "allow",
     "edit": {
-      "/Users/george/Desktop/AIStack/*": "allow"
+      "/Users/george/Desktop/MyDocs/Creator/AIStack/*": "allow"
     },
     "read": {
-      "/Users/george/Desktop/AIStack/*": "allow"
+      "/Users/george/Desktop/MyDocs/Creator/AIStack/*": "allow"
     }
   },
   "lsp": {
@@ -136,10 +136,10 @@
   "shell": "bash",
   "disabled_providers": [],
   "instructions": [
-    "ToDo.md",
+    "Todo.md",
     "Always respond in English. Never use any other language for responses, code comments, documentation, or chat."
   ],
-  "model": "omlx/Qwen3-Coder-30B-A3B-Instruct-MLX-5bit",
+  "model": "omlx/Qwen3.6-35B-A3B-5bit",
   "agent": {
     "build": {
       "mode": "primary",
@@ -152,7 +152,7 @@
     "plan": {
       "description": "Trigger this to construct system architectural designs, roadmaps, step-by-step refactoring strategies, and structural breakdowns before implementation.",
       "mode": "subagent",
-      "model": "omlx/Qwen3-Coder-30B-A3B-Instruct-MLX-5bit",
+      "model": "omlx/Qwen3.6-35B-A3B-5bit",
       "prompt": "You are a software architect. Focus on high-level architecture, system dependencies, component design, and structured execution plans. Generates architectural diagrams in SVG (scalable vector graphics), and sequence diagrams using PlantUML format. Do not edit workspace files directly.",
       "permissions": {
         "edit": "deny",
@@ -162,7 +162,7 @@
     "code-reviewer": {
       "description": "Trigger this to review Go, Python, JS/TS code, PNG architecture flowcharts, and SVG (scalable vector graphics) based sequence diagrams.",
       "mode": "subagent",
-      "model": "omlx/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-5bit",
+      "model": "omlx/Qwen3.6-27B-MLX-6bit",
       "prompt": "You are a senior full-stack code and diagram reviewer. Specializing in high-throughput Go microservices, Python automation tools, real-time JS apps, and architectural visual assets (PNG flowcharts, SVG diagrams and PlantUML format). Focus on concurrency safety, resource cleanup, protocol accuracy, and visual structural integrity.",
       "permissions": {
         "edit": "deny"
