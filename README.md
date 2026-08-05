@@ -525,3 +525,5 @@ In the developer's IDE configuration, the OpenAI standard interface allows mappi
 
 - [The Best Local LLM for Coding Already fits in your RAM](https://www.youtube.com/watch?v=Ksz7WnIGTk8)
 
+- [Free AI Coding has a secret: You Already Lost](https://www.youtube.com/watch?v=fRtCkaCZ_k4)  
+  This is insightful, and scary.
